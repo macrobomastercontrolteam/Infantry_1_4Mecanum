@@ -307,3 +307,18 @@ uint8_t ifToeStatusExist(uint8_t _start, uint8_t _end, toe_status_e _status_to_f
 	}
 	return fStatusExist;
 }
+
+uint32_t toe_check(void)
+{
+    uint32_t all_status = 0; 
+    
+    for (int i = 0; i < (ERROR_LIST_LENGTH); i++)
+    {
+        if (toe_is_error(i))
+        {
+            all_status |= (1 << i); 
+        }
+    }
+    return all_status;
+}
+
